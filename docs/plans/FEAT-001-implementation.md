@@ -62,17 +62,17 @@ State: Complete (checkpoint pending commit).
 ## Phase 3: final production verification and delivery
 
 Requirements: All FEAT-001 requirements; REQ-015 may remain Pending human participation.
-State: Not started.
+State: Complete (checkpoint pending commit).
 
-- [ ] Review text for source accuracy, duplicate claims, unsupported superlatives, and working resume/contact access.
-- [ ] Confirm all local asset references resolve and compressed preview sizes meet the target or have justified exceptions.
-- [ ] Run npm test and npm run build on the final tree.
-- [ ] Run npm run preview -- --host 127.0.0.1 in a retained session and open the exact printed URL.
-- [ ] Confirm a successful response and smoke-check the production page, main links, and carousel; development-server success alone is insufficient.
-- [ ] Record actual final commands, times, results, screenshots, and limitations in the evidence.
-- [ ] Keep human ten-second tests and physical-device checks Pending unless actually performed; give Len the short test procedure without pausing delivery for it.
-- [ ] Add a concise README with install/run/build instructions and how to update projects, credentials, resume, and optional Drive originals.
-- [ ] Mark completed versus unavailable checks accurately and update the handoff with any remaining limitations.
+- [x] Review text for source accuracy, duplicate claims, unsupported superlatives, and working resume/contact access.
+- [x] Confirm all local asset references resolve and compressed preview sizes meet the target or have justified exceptions.
+- [x] Run npm test and npm run build on the final tree.
+- [x] Run npm run preview -- --host 127.0.0.1 in a retained session and open the exact printed URL.
+- [x] Confirm a successful response and smoke-check the production page, main links, and carousel; development-server success alone is insufficient.
+- [x] Record actual final commands, times, results, screenshots, and limitations in the evidence.
+- [x] Keep human ten-second tests and physical-device checks Pending unless actually performed; give Len the short test procedure without pausing delivery for it.
+- [x] Add a concise README with install/run/build instructions and how to update projects, credentials, resume, and optional Drive originals.
+- [x] Mark completed versus unavailable checks accurately and update the handoff with any remaining limitations.
 - [ ] Review/stage only relevant changes and commit: chore(portfolio): verify production build and document maintenance
 - [ ] Verify the commit and final git status; preserve unrelated changes.
 - [ ] Deliver the local production preview and a concise summary of checks and limitations.
