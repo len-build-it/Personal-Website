@@ -82,22 +82,23 @@ Commit: feat(portfolio): refine credential gallery and compact index
 ## Phase 3: production visual QA and handoff
 
 Requirements: All active FEAT-001 and VIS requirements.
-State: Not started.
+State: Complete.
+Commit: chore(portfolio): verify editorial redesign across screen sizes
 
-- [ ] Run npm run build and npm test against the actual required server URLs on the final source.
-- [ ] Review the production preview at 320, 390, 768, 1024, and 1440px; confirm this is the latest production output, not stale dist.
-- [ ] Capture final 390x844 and 1440x900 opening views, project rows, credential gallery/index, and contact.
-- [ ] Record measured first-project position, credential section height, document overflow, body font sizes, and actual screenshot paths.
-- [ ] Check 200% text enlargement, keyboard traversal, visible focus, reduced motion, vertical mobile scrolling, failed preview image, and readable no-JS fallback.
-- [ ] Compare before/after with the reference principles: serif/sans hierarchy, image space, minimal chrome, concise captions, and deliberate alignment.
-- [ ] Check all public assets and supplied links; record external login/access limits rather than fabricate alternatives.
-- [ ] Preserve the performance budget and review actual asset sizes; do not infer a performance score from localhost response time.
-- [ ] Correct visual issues before marking the phase complete; continue through recoverable failures.
-- [ ] Update README for any actual credential-maintenance changes, evidence, current handoff, and plan progress.
-- [ ] Commit reviewed final paths: chore(portfolio): verify editorial redesign across screen sizes
-- [ ] Confirm the commit and final git status; leave unrelated user changes untouched.
-- [ ] Deliver the verified local preview, representative screenshots, commit references, and remaining limitations.
-- [ ] Do not push or publish publicly without a separate request.
+- [x] Run npm run build and npm test against the actual required server URLs on the final source.
+- [x] Review the production preview at 320, 390, 768, 1024, and 1440px; confirm this is the latest production output, not stale dist.
+- [x] Capture final 390x844 and 1440x900 opening views, project rows, credential gallery/index, and contact.
+- [x] Record measured first-project position, credential section height, document overflow, body font sizes, and actual screenshot paths.
+- [x] Check 200% text enlargement, keyboard traversal, visible focus, reduced motion, vertical mobile scrolling, failed preview image, and readable no-JS fallback.
+- [x] Compare before/after with the reference principles: serif/sans hierarchy, image space, minimal chrome, concise captions, and deliberate alignment.
+- [x] Check all public assets and supplied links; record external login/access limits rather than fabricate alternatives.
+- [x] Preserve the performance budget and review actual asset sizes; do not infer a performance score from localhost response time.
+- [x] Correct visual issues before marking the phase complete; continue through recoverable failures.
+- [x] Update README for any actual credential-maintenance changes, evidence, current handoff, and plan progress.
+- [x] Commit reviewed final paths: chore(portfolio): verify editorial redesign across screen sizes
+- [x] Confirm the commit and final git status; leave unrelated user changes untouched.
+- [x] Deliver the verified local preview, representative screenshots, commit references, and remaining limitations.
+- [x] Do not push or publish publicly without a separate request.
 
 ## Completion and recovery
 

@@ -70,9 +70,9 @@ npm run preview
 
 ### 3. Adding or Updating Credentials
 1. Open `index.html` and locate `<ul class="credentials-list">`.
-2. Add a new `<li>` element with thumbnail image, badge, title, issuer, date, and link to the document.
-3. **No JavaScript edits required**: `src/main.js` automatically detects all `.credential-item` elements in the DOM and populates the carousel dynamically.
-4. If you have a public Google Drive view link, add it directly to `href` in the `<a class="link-doc">` tag with `target="_blank" rel="noopener noreferrer"`.
+2. Add a new `<li class="credential-item" data-thumb="/assets/images/cert-name.webp" data-thumb-alt="Certificate description">` element with title, badge, issuer, and document link.
+3. **No JavaScript edits required**: `src/main.js` reads `data-thumb` and content directly from each `.credential-item` and builds the single-slide gallery dynamically.
+4. If you have a public Google Drive view link or official certificate URL, add it directly to `href` in `<a class="link-doc">` with `target="_blank" rel="noopener noreferrer"`.
 
 ---
 

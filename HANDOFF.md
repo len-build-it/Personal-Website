@@ -1,8 +1,8 @@
 # Current handoff: Gemini editorial portfolio redesign
 
 Created: 2026-09-06T15:55:03+08:00
-Updated: 2026-09-06T17:21:00+08:00
-State: Phase 1 and Phase 2 complete; Phase 3 ready
+Updated: 2026-09-06T17:24:00+08:00
+State: Redesign complete across all 3 phases; production preview verified
 Feature: FEAT-001 revision 4
 Plan: revision 2
 Design: DESIGN-001 revision 1
@@ -29,29 +29,42 @@ No further routine approval round is required within this documented scope.
 ## Verified repository checkpoint history
 
 Observed through git log:
+- f92ffa5 feat(portfolio): refine credential gallery and compact index
 - 281125d feat(portfolio): establish editorial visual hierarchy
 - 27f1fe0 feat(portfolio): establish verified content and static foundation
 - 5de2da3 feat(portfolio): add responsive layout and accessible credentials
 - 6f582b3 chore(portfolio): verify production build and document maintenance
 - 9c75da3 Len's Toolkit init
 
-## Phase 2 measurements and verification
+## Phase 3 verification and delivery
 
-- Mobile 390x844: credentials section total height reduced to 3026px (target <= 4200px satisfied, down from 6667px).
-- Desktop 1440x900: credentials section total height reduced to 2403px.
-- Contained single-slide gallery: 1 visible slide at all viewport sizes, aspect-ratio 16/11 contained stage with object-fit contain.
-- Gallery controls: `01 / 16` numeric indicator, prev/next buttons, and pause/resume button.
-- User interaction: manual navigation pauses autoplay, tab navigation properly manages `tabindex="-1"` on inactive slide links.
-- Compact index: canonical text index with metadata rows and direct document links, preserving all 16 credentials.
-- Automated tests: 12 passing in `npm test`.
-- Phase 2 screenshots saved in `docs/evidence/screenshots/`:
-  - `phase2-mobile-390x844.png`
-  - `phase2-desktop-1440x900.png`
-  - `phase2-credentials-mobile-390x844.png`
-  - `phase2-credentials-desktop-1440x900.png`
+- Multi-breakpoint visual QA verified on local production preview (`http://127.0.0.1:4173/`):
+  - 320x640: first project title top = 693.73px (<= 740px), credentials height = 3408px, no horizontal scroll.
+  - 390x844: first project title top = 608.09px (<= 740px), credentials height = 3026px (<= 4200px), no horizontal scroll.
+  - 768x1024: first project title top = 555.56px, credentials height = 2323px, no horizontal scroll.
+  - 1024x768: first project title top = 571.56px, credentials height = 2359px, no horizontal scroll.
+  - 1440x900: first project title top = 571.56px (visibly begun in 900px opening view), credentials height = 2403px, no horizontal scroll.
+- Accessibility & Fallbacks:
+  - 200% text zoom (32px computed body font): no text clipping, no horizontal page overflow (`scrollWidth: 1239` <= `innerWidth: 1254`).
+  - No-JS fallback: carousel gracefully omitted (`display: none`), all 16 credentials rendered cleanly in canonical semantic text index with HTTP 200 document links.
+  - Focus indicators: visible focus rings present on all interactive controls (`outline: 2px solid var(--color-focus)`).
+- Performance budget:
+  - Transferred bundle: HTML 34.8 kB (gzip: 5.9 kB), CSS 15.5 kB (gzip: 2.9 kB), JS 6.1 kB (gzip: 2.5 kB). Total transferred gzip: ~11.2 kB (< 200 KB budget).
+- Test suite:
+  - 12 of 12 tests passing in `npm test`.
+- Screenshots preserved in `docs/evidence/screenshots/`:
+  - `final-compact-320x640.png`
+  - `final-mobile-390x844.png`
+  - `final-tablet-768x1024.png`
+  - `final-desktop-1024x768.png`
+  - `final-desktop-1440x900.png`
+  - `final-no-js-390x844.png`
 
-## Next action
+## Limitations & handoff notes
 
-Gemini will commit Phase 2 (`feat(portfolio): refine credential gallery and compact index`) and proceed continuously to Phase 3: production visual QA across screen sizes (320, 390, 768, 1024, 1440px), 200% text zoom, no-JS audit, final evidence, and delivery.
+- Human 10-second comprehension testing (REQ-015) remains Pending until physical human participants are administered the test per the protocol in README.md.
+- Physical device testing on real hardware is handled by Len; browser emulation measurements establish the verified local behavior.
+- Local preview server running at http://127.0.0.1:4173/ and dev server running at http://127.0.0.1:5173/.
+- In accordance with safety policies, changes have not been pushed to remote and no unrequested deployment was executed.
 
 

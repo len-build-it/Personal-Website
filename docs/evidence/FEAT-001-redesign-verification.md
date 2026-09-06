@@ -24,11 +24,22 @@ Design: DESIGN.md revision 1
 | REQ-006 / REQ-013: Contact destinations | PASS | All 6 destinations preserved: direct email (`mailto:olajaylenardangelo@gmail.com`), LinkedIn, GitHub, Instagram, Facebook, JobStreet. |
 | REQ-009: Privacy | PASS | No private phone numbers, home addresses, secrets, or tracking scripts present. Automated test confirmed `09944891004` absent. |
 | Core automated test suite | PASS | `npm test` executed: 12 tests passed, 0 failures. |
-| Production build | PASS | `npm run build` completed cleanly without errors. |
+| Production build & budget | PASS | `npm run build` completed in ~200ms. Production dist: HTML 34.8 kB (gzip: 5.9 kB), CSS 15.5 kB (gzip: 2.9 kB), JS 6.1 kB (gzip: 2.5 kB). Total transferred gzip: ~11.2 kB, well under 200 KB budget. |
+| Cross-breakpoint responsiveness | PASS | Verified on production preview server at 320, 390, 768, 1024, and 1440px widths. `hasHorizontalOverflow: false` across all form factors. |
+| Progressive enhancement / No-JS | PASS | With JS execution disabled via CDP: clean layout renders semantic masthead, intro, builds, background, credentials list, and contact links. Carousel cleanly hidden. All 16 documents and letters accessible. |
+| Accessibility: 200% text zoom | PASS | Verified with html fontSize set to 200% (32px body font): layout adapts without text clipping or horizontal document overflow (`scrollWidth: 1239` <= `innerWidth: 1254`). |
+| Accessibility: Focus indicators | PASS | Interactive controls and skip link have visible focus outline (`outline: 2px solid var(--color-focus)`). |
 
-## Measured viewport data
+## Measured viewport data across breakpoints (Production Preview)
 
-### Mobile (390x844)
+### Compact Mobile (320x640)
+- Viewport: 320 x 640 CSS px
+- Page scroll width: 320 px (no horizontal scrollbar)
+- First project title top: 693.73 px (<= 740px satisfied)
+- Credentials section height: 3408 px (<= 4200px satisfied)
+- Body font size: 16px
+
+### Standard Mobile (390x844)
 - Viewport: 390 x 844 CSS px
 - Page scroll width: 390 px (no horizontal scrollbar)
 - Masthead height: 45 px
@@ -40,7 +51,21 @@ Design: DESIGN.md revision 1
 - Body font size: 16px
 - H1 font size: 30px serif
 
-### Desktop (1440x900)
+### Tablet (768x1024)
+- Viewport: 768 x 1024 CSS px
+- Page scroll width: 753 px (no horizontal scrollbar)
+- First project title top: 555.56 px
+- Credentials section height: 2323 px
+- Body font size: 16px
+
+### Laptop / Small Desktop (1024x768)
+- Viewport: 1024 x 768 CSS px
+- Page scroll width: 1009 px (no horizontal scrollbar)
+- First project title top: 571.56 px
+- Credentials section height: 2359 px
+- Body font size: 16px
+
+### Full Desktop (1440x900)
 - Viewport: 1440 x 900 CSS px
 - Page scroll width: 1425 px (no horizontal scrollbar)
 - Masthead height: 45 px
@@ -52,6 +77,12 @@ Design: DESIGN.md revision 1
 - Body font size: 16px
 - H1 font size: 48px serif
 
+### No-JS Fallback (390x844)
+- Page scroll width: 390 px
+- Carousel container display: `none`
+- Canonical credentials list items: 16
+- All original PDF documents and certificates directly linked with HTTP 200 resolution.
+
 ## Artifacts & screenshots
 
 - Before Mobile (390x844): `docs/evidence/screenshots/before-mobile-390x844.png`
@@ -62,9 +93,14 @@ Design: DESIGN.md revision 1
 - Phase 2 Desktop (1440x900): `docs/evidence/screenshots/phase2-desktop-1440x900.png`
 - Phase 2 Credentials Mobile (390x844): `docs/evidence/screenshots/phase2-credentials-mobile-390x844.png`
 - Phase 2 Credentials Desktop (1440x900): `docs/evidence/screenshots/phase2-credentials-desktop-1440x900.png`
+- Final Production Compact Mobile (320x640): `docs/evidence/screenshots/final-compact-320x640.png`
+- Final Production Mobile (390x844): `docs/evidence/screenshots/final-mobile-390x844.png`
+- Final Production Tablet (768x1024): `docs/evidence/screenshots/final-tablet-768x1024.png`
+- Final Production Laptop (1024x768): `docs/evidence/screenshots/final-desktop-1024x768.png`
+- Final Production Desktop (1440x900): `docs/evidence/screenshots/final-desktop-1440x900.png`
+- Final Production No-JS (390x844): `docs/evidence/screenshots/final-no-js-390x844.png`
 
 ## Limitations & pending checks
 
-- Human 10-second comprehension testing (REQ-015) remains Pending until physical readers can be tested.
-- Physical device testing on real hardware is handled by Len; browser emulation measurements establish the verified local behavior.
-- Phase 3 will execute responsive verification across 320, 390, 768, 1024, and 1440px on the production preview server with 200% zoom and no-JS audits.
+- Human 10-second comprehension testing (REQ-015) remains Pending until physical human participants are administered the test per the protocol in README.md.
+- Physical device testing on physical hardware is handled by Len; browser emulation measurements establish the verified local behavior.
