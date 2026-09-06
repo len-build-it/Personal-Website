@@ -38,6 +38,7 @@ test('All certificate preview images exist and are under 200 KB', () => {
     'cert-aifest-webinar-agile.webp',
     'project-aqone.webp',
     'project-tabang.webp',
+    'project-warang.webp',
     'idpic.jpg'
   ];
 

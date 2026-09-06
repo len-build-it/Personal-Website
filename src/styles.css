@@ -552,6 +552,15 @@ body {
   }
 }
 
+.build-stage-warang {
+  background-color: #f2a41a;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.build-img-contain {
+  object-fit: contain;
+}
+
 /* Text-only build stage fallback */
 .build-stage-text {
   min-height: 130px;

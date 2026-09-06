@@ -62,6 +62,10 @@ Observed through git log:
 
 ## Recent enhancements (2026-09-06)
 
+- Added Warang project showcase logo (`/assets/images/project-warang.webp` and `Warang.png`):
+  - Replaced text monogram fallback stage in Build 2 with custom brand identity stage.
+  - Optimized 22 KB WebP asset with brand background (`#f2a41a`) and uncropped `contain` fit.
+  - Verified crisp rendering across mobile and desktop.
 - Added profile portrait (`/assets/images/idpic.jpg`) to intro/title section:
   - Mobile: compact 72px avatar aligned with H1/role header.
   - Desktop: 180px editorial portrait cleanly integrated into editorial intro grid.
@@ -72,6 +76,8 @@ Observed through git log:
   - Responsive footer metadata layout with back-to-top navigation.
 - All 12 automated unit, content-integrity, preview, and response tests passing.
 - Visual evidence preserved in `docs/evidence/screenshots/`:
+  - `warang-mobile.png`
+  - `warang-desktop.png`
   - `portrait-mobile-390x844.png`
   - `portrait-desktop-1440x900.png`
   - `footer-mobile.png`
