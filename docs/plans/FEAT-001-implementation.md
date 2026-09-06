@@ -57,26 +57,27 @@ State: Complete.
 ## Phase 2: certificate presentation and real interaction checks
 
 Requirements: FEAT-001/REQ-010 through REQ-014; VIS-003 through VIS-008.
-State: Not started.
+State: Complete.
+Commit: feat(portfolio): refine credential gallery and compact index
 
-- [ ] Trace every selector, event handler, and caller affected by canonical credential markup changes in src/main.js and tests/.
-- [ ] Build one contained certificate figure with an adjacent desktop caption and stacked mobile caption.
-- [ ] Replace repeated thumbnail cards with a compact text index; preserve all 16 credential records and original-document destinations.
-- [ ] Keep preview metadata in the same canonical source; migrate extraction before removing the old .cred-thumb elements.
-- [ ] Replace the 16-dot strip with numeric position, previous/next, and pause/resume.
-- [ ] Use actual slide offsets including gaps, or a gap-free full-width track, so every slide aligns exactly.
-- [ ] Preserve explicit user pause across hover, visibility, resize, and reduced-motion changes; verify pause/resume with both keyboard and pointer.
-- [ ] Preserve no-JS index/original links, sensible zero/one-item states, screen-reader naming, and hidden-slide focus management.
-- [ ] Replace duplicate arithmetic tests with a minimal production-importing check or direct browser behavior checks; add no testing framework.
-- [ ] Update stale text/structural assertions to test meaningful content/link behavior while retaining coverage.
-- [ ] Build before server-based tests, then run npm run preview -- --host 127.0.0.1 and use its printed URL.
-- [ ] Existing tests expect port 4173; use that if available, otherwise make the test base URL configurable and pass the actual printed URL.
-- [ ] Run npm test with required dev/preview servers available; read tests/server-responses.test.js to satisfy its real preconditions.
-- [ ] Exercise all gallery positions, zero/one/multiple-item cases, focus, pause/resume, reduced motion, tab visibility, and no-JS reading.
-- [ ] Measure the credential section at 390px and compare to the <=4200px target without hiding qualifications.
-- [ ] Update evidence, plan state, and handoff; inspect and stage only reviewed paths.
-- [ ] Commit: feat(portfolio): refine credential gallery and compact index
-- [ ] Verify the checkpoint and continue immediately.
+- [x] Trace every selector, event handler, and caller affected by canonical credential markup changes in src/main.js and tests/.
+- [x] Build one contained certificate figure with an adjacent desktop caption and stacked mobile caption.
+- [x] Replace repeated thumbnail cards with a compact text index; preserve all 16 credential records and original-document destinations.
+- [x] Keep preview metadata in the same canonical source; migrate extraction before removing the old .cred-thumb elements.
+- [x] Replace the 16-dot strip with numeric position, previous/next, and pause/resume.
+- [x] Use actual slide offsets including gaps, or a gap-free full-width track, so every slide aligns exactly.
+- [x] Preserve explicit user pause across hover, visibility, resize, and reduced-motion changes; verify pause/resume with both keyboard and pointer.
+- [x] Preserve no-JS index/original links, sensible zero/one-item states, screen-reader naming, and hidden-slide focus management.
+- [x] Replace duplicate arithmetic tests with a minimal production-importing check or direct browser behavior checks; add no testing framework.
+- [x] Update stale text/structural assertions to test meaningful content/link behavior while retaining coverage.
+- [x] Build before server-based tests, then run npm run preview -- --host 127.0.0.1 and use its printed URL.
+- [x] Existing tests expect port 4173; use that if available, otherwise make the test base URL configurable and pass the actual printed URL.
+- [x] Run npm test with required dev/preview servers available; read tests/server-responses.test.js to satisfy its real preconditions.
+- [x] Exercise all gallery positions, zero/one/multiple-item cases, focus, pause/resume, reduced motion, tab visibility, and no-JS reading.
+- [x] Measure the credential section at 390px and compare to the <=4200px target without hiding qualifications.
+- [x] Update evidence, plan state, and handoff; inspect and stage only reviewed paths.
+- [x] Commit: feat(portfolio): refine credential gallery and compact index
+- [x] Verify the checkpoint and continue immediately.
 
 ## Phase 3: production visual QA and handoff
 

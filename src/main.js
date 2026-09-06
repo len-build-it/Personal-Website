@@ -1,12 +1,29 @@
 /**
  * Progressive enhancement for Lenard Angelo Olajay Portfolio.
- * Enhances canonical credentials list into an accessible carousel.
+ * Enhances canonical credentials list into an accessible single-slide carousel
+ * with numeric indicator, contained image stage, and explicit pause/resume controls.
  */
+
+export function calculateVisibleCount() {
+  return 1;
+}
+
+export function calculateMaxIndex(total) {
+  return Math.max(0, total - 1);
+}
+
+export function nextIndex(current, maxIdx) {
+  return current >= maxIdx ? 0 : current + 1;
+}
+
+export function prevIndex(current, maxIdx) {
+  return current <= 0 ? maxIdx : current - 1;
+}
 
 export function initCarousel() {
   const container = document.getElementById('carousel-container');
   const track = document.getElementById('carousel-track');
-  const pagination = document.getElementById('carousel-pagination');
+  const counter = document.getElementById('carousel-counter');
   const liveRegion = document.getElementById('carousel-live-region');
   const prevBtn = document.getElementById('carousel-prev');
   const nextBtn = document.getElementById('carousel-next');
@@ -18,6 +35,7 @@ export function initCarousel() {
   // Read credentials directly from the canonical semantic HTML
   const sourceItems = document.querySelectorAll('.credentials-list .credential-item');
   if (sourceItems.length === 0) {
+    container.style.display = 'none';
     return null;
   }
 
@@ -27,11 +45,11 @@ export function initCarousel() {
     const badgeClass = el.querySelector('.cred-badge')?.className || 'cred-badge';
     const issuer = el.querySelector('.cred-issuer')?.textContent?.trim() || '';
     const img = el.querySelector('.cred-thumb');
-    const imgSrc = img?.getAttribute('src') || '';
-    const imgAlt = img?.getAttribute('alt') || title;
+    const imgSrc = el.dataset.thumb || img?.getAttribute('src') || '';
+    const imgAlt = el.dataset.thumbAlt || img?.getAttribute('alt') || title;
     const docLink = el.querySelector('.link-doc');
     const docHref = docLink?.getAttribute('href') || '';
-    const docText = docLink?.textContent?.trim() || 'View Original Document';
+    const docText = docLink?.textContent?.trim() || 'View Document';
 
     return {
       id: `cred-slide-${idx}`,
@@ -46,31 +64,25 @@ export function initCarousel() {
     };
   });
 
+  const total = credentials.length;
+
   // If only 1 credential, display static slide without timer or controls
-  if (credentials.length === 1) {
+  if (total === 1) {
     container.style.display = 'block';
     if (prevBtn) prevBtn.style.display = 'none';
     if (nextBtn) nextBtn.style.display = 'none';
     if (playPauseBtn) playPauseBtn.style.display = 'none';
+    if (counter) counter.textContent = '01 / 01';
     track.innerHTML = createSlideHtml(credentials[0], 0, 1);
     return { count: 1, autoplay: false };
   }
 
   // Populate slides
-  track.innerHTML = credentials.map((c, i) => createSlideHtml(c, i, credentials.length)).join('');
-  
-  // Create pagination dots
-  if (pagination) {
-    pagination.innerHTML = credentials.map((_, i) => `
-      <button type="button" class="carousel-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Go to slide ${i + 1} of ${credentials.length}">
-      </button>
-    `).join('');
-  }
-
+  track.innerHTML = credentials.map((c, i) => createSlideHtml(c, i, total)).join('');
   container.style.display = 'block';
 
   let currentIndex = 0;
-  const total = credentials.length;
+  const maxIndex = calculateMaxIndex(total);
   let isPausedByUser = false;
   let isHovered = false;
   let isInViewport = false;
@@ -79,41 +91,22 @@ export function initCarousel() {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  function getVisibleCount() {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 640) return 2;
-    return 1;
-  }
-
-  function getMaxIndex() {
-    return Math.max(0, total - getVisibleCount());
-  }
-
   function updateCarousel(announce = false) {
-    const visibleCount = getVisibleCount();
-    const maxIdx = getMaxIndex();
-    if (currentIndex > maxIdx) {
-      currentIndex = maxIdx;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Update numeric counter (01 / 16)
+    if (counter) {
+      const curStr = String(currentIndex + 1).padStart(2, '0');
+      const totStr = String(total).padStart(2, '0');
+      counter.textContent = `${curStr} / ${totStr}`;
+      counter.setAttribute('aria-label', `Slide ${currentIndex + 1} of ${total}`);
     }
 
-    const slideWidthPercent = 100 / visibleCount;
-    track.style.transform = `translateX(-${currentIndex * slideWidthPercent}%)`;
-
-    // Update pagination dots
-    if (pagination) {
-      const dots = pagination.querySelectorAll('.carousel-dot');
-      dots.forEach((dot, idx) => {
-        const isCurrent = idx === currentIndex;
-        dot.classList.toggle('active', isCurrent);
-        dot.setAttribute('aria-current', isCurrent ? 'true' : 'false');
-      });
-    }
-
-    // Update inert / tab indices for visibility
+    // Update inert / tab indices so hidden slides cannot receive keyboard focus
     const slides = track.querySelectorAll('.carousel-slide');
     slides.forEach((slide, idx) => {
-      const isVisible = idx >= currentIndex && idx < currentIndex + visibleCount;
-      const links = slide.querySelectorAll('a');
+      const isVisible = idx === currentIndex;
+      const links = slide.querySelectorAll('a, button');
       links.forEach(link => {
         if (isVisible) {
           link.removeAttribute('tabindex');
@@ -129,12 +122,7 @@ export function initCarousel() {
   }
 
   function nextSlide(userAction = false) {
-    const maxIdx = getMaxIndex();
-    if (currentIndex >= maxIdx) {
-      currentIndex = 0;
-    } else {
-      currentIndex++;
-    }
+    currentIndex = nextIndex(currentIndex, maxIndex);
     if (userAction) {
       pauseAutoplay(true);
     }
@@ -142,12 +130,7 @@ export function initCarousel() {
   }
 
   function prevSlide(userAction = false) {
-    const maxIdx = getMaxIndex();
-    if (currentIndex <= 0) {
-      currentIndex = maxIdx;
-    } else {
-      currentIndex--;
-    }
+    currentIndex = prevIndex(currentIndex, maxIndex);
     if (userAction) {
       pauseAutoplay(true);
     }
@@ -155,7 +138,7 @@ export function initCarousel() {
   }
 
   function goToSlide(index, userAction = false) {
-    currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
     if (userAction) {
       pauseAutoplay(true);
     }
@@ -216,15 +199,6 @@ export function initCarousel() {
     });
   }
 
-  if (pagination) {
-    pagination.addEventListener('click', (e) => {
-      const dot = e.target.closest('.carousel-dot');
-      if (dot && dot.dataset.index !== undefined) {
-        goToSlide(parseInt(dot.dataset.index, 10), true);
-      }
-    });
-  }
-
   // Hover pauses movement
   container.addEventListener('mouseenter', () => {
     isHovered = true;
@@ -233,9 +207,12 @@ export function initCarousel() {
     isHovered = false;
   });
 
-  // Keyboard focus into carousel stops automatic movement
-  container.addEventListener('focusin', () => {
-    pauseAutoplay(true);
+  // Keyboard focus entering the carousel stops automatic movement
+  container.addEventListener('focusin', (e) => {
+    // If the focus came from inside carousel or controls, respect user pause
+    if (e.target !== playPauseBtn) {
+      pauseAutoplay(true);
+    }
   });
 
   // Keyboard arrow navigation on viewport
@@ -312,13 +289,15 @@ export function initCarousel() {
   // Reduced motion preference change
   prefersReducedMotion.addEventListener('change', (e) => {
     if (e.matches) {
-      pauseAutoplay(true);
+      pauseAutoplay(false);
     } else {
-      resumeAutoplay();
+      if (!isPausedByUser) {
+        resumeAutoplay();
+      }
     }
   });
 
-  // Responsive resize
+  // Responsive resize: update translation
   window.addEventListener('resize', () => {
     updateCarousel(false);
   });
@@ -344,18 +323,28 @@ export function initCarousel() {
 }
 
 function createSlideHtml(c, index, total) {
+  const curNum = String(index + 1).padStart(2, '0');
+  const totNum = String(total).padStart(2, '0');
+
   return `
     <div class="carousel-slide" id="${c.id}" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${total}">
-      <div class="slide-media">
-        <img src="${c.imgSrc}" alt="${c.imgAlt}" class="slide-img" loading="lazy" width="400" height="300" onerror="this.style.display='none'">
-      </div>
-      <div class="slide-body">
-        <span class="${c.badgeClass}">${c.badge}</span>
-        <h4 class="slide-title">${c.title}</h4>
-        <p class="slide-meta">${c.issuer}</p>
-        <a href="${c.docHref}" target="_blank" rel="noopener noreferrer" class="slide-link">
-          View Original Document <span class="external-hint" aria-hidden="true">↗</span><span class="sr-only">(opens in new tab)</span>
-        </a>
+      <div class="slide-layout">
+        <div class="slide-stage">
+          <img src="${c.imgSrc}" alt="${c.imgAlt}" class="slide-img" loading="${index === 0 ? 'eager' : 'lazy'}" width="600" height="420" onerror="this.alt='Certificate preview unavailable'; this.classList.add('img-fallback');">
+        </div>
+        <div class="slide-info">
+          <div class="slide-meta-row">
+            <span class="slide-index">${curNum} / ${totNum}</span>
+            <span class="slide-badge">${c.badge}</span>
+          </div>
+          <h4 class="slide-title">${c.title}</h4>
+          <p class="slide-issuer">${c.issuer}</p>
+          <div class="slide-action">
+            <a href="${c.docHref}" target="_blank" rel="noopener noreferrer" class="slide-link">
+              View Document <span class="external-hint" aria-hidden="true">↗</span><span class="sr-only">(opens in new tab)</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   `;

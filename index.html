@@ -238,6 +238,7 @@
           <div class="carousel-toolbar">
             <span class="carousel-heading">Credentials Gallery</span>
             <div class="carousel-controls">
+              <span id="carousel-counter" class="carousel-counter" aria-label="Slide 1 of 16">01 / 16</span>
               <button type="button" class="btn-ctrl" id="carousel-prev" aria-label="Previous credential slide">
                 ←
               </button>
@@ -256,10 +257,6 @@
             </div>
           </div>
 
-          <div class="carousel-pagination" id="carousel-pagination" aria-label="Slide navigation dots">
-            <!-- Dot indicators -->
-          </div>
-
           <div class="sr-only" aria-live="polite" id="carousel-live-region"></div>
         </div>
 
@@ -270,10 +267,7 @@
 
           <ul class="credentials-list">
             <!-- Credential 1 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-aifest-aquanons.webp" alt="AI Fest 2026 AI Hackathon Finalist Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-aifest-aquanons.webp" data-thumb-alt="AI Fest 2026 AI Hackathon Finalist Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">AI Fest 2026: AI Hackathon — Finalist (Rank 2 of 5, School-Based)</h4>
@@ -289,10 +283,7 @@
             </li>
 
             <!-- Credential 2 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-ictweek-programming.webp" alt="1st Place Programming Contest Certificate of Recognition" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-ictweek-programming.webp" data-thumb-alt="1st Place Programming Contest Certificate of Recognition">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">1st Place, Programming Contest — ICT Week 2026</h4>
@@ -308,10 +299,7 @@
             </li>
 
             <!-- Credential 3 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-komsai-tabang.webp" alt="UPV KomsaiHack 2026 RiskReady Top 10 Placement Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-komsai-tabang.webp" data-thumb-alt="UPV KomsaiHack 2026 RiskReady Top 10 Placement Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">KomsaiHack 2026: RiskReady — Top 10 Placement</h4>
@@ -327,10 +315,7 @@
             </li>
 
             <!-- Credential 4 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-dict-python.webp" alt="DICT Python Programming Essentials Certificate of Completion" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-dict-python.webp" data-thumb-alt="DICT Python Programming Essentials Certificate of Completion">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Python Programming Essentials Training (40 Hours)</h4>
@@ -346,10 +331,7 @@
             </li>
 
             <!-- Credential 5 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-dict-cybersecurity.webp" alt="DICT Cybersecurity Awareness and Data Privacy Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-dict-cybersecurity.webp" data-thumb-alt="DICT Cybersecurity Awareness and Data Privacy Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Cybersecurity Awareness, Data Privacy &amp; Trends for Students (4 Hours)</h4>
@@ -365,10 +347,7 @@
             </li>
 
             <!-- Credential 6 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-wvsu-aws.webp" alt="WVSU AWS reStart Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-wvsu-aws.webp" data-thumb-alt="WVSU AWS reStart Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">AWS re/Start Cloud Training Program Completion</h4>
@@ -384,10 +363,7 @@
             </li>
 
             <!-- Credential 7 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-wvsu-ai.webp" alt="WVSU AI and Machine Learning Foundations Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-wvsu-ai.webp" data-thumb-alt="WVSU AI and Machine Learning Foundations Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">AI &amp; Machine Learning Foundations Workshop</h4>
@@ -403,10 +379,7 @@
             </li>
 
             <!-- Credential 8 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-energy-nexus.webp" alt="Energy Nexus Hackathon Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-energy-nexus.webp" data-thumb-alt="Energy Nexus Hackathon Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Energy Nexus Innovation Challenge — Participant</h4>
@@ -422,10 +395,7 @@
             </li>
 
             <!-- Credential 9 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-digital-storytelling.webp" alt="Digital Storytelling Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-digital-storytelling.webp" data-thumb-alt="Digital Storytelling Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Digital Storytelling &amp; Content Strategy Seminar</h4>
@@ -441,10 +411,7 @@
             </li>
 
             <!-- Credential 10 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-datacamp-openai.webp" alt="DataCamp Working with OpenAI API Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-datacamp-openai.webp" data-thumb-alt="DataCamp Working with OpenAI API Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Working with the OpenAI API Course Completion</h4>
@@ -460,10 +427,7 @@
             </li>
 
             <!-- Credential 11 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-datacamp-python.webp" alt="DataCamp Intermediate Python Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-datacamp-python.webp" data-thumb-alt="DataCamp Intermediate Python Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Intermediate Python Course Completion</h4>
@@ -479,10 +443,7 @@
             </li>
 
             <!-- Credential 12 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-datacamp-java-beginner.webp" alt="DataCamp Introduction to Java Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-datacamp-java-beginner.webp" data-thumb-alt="DataCamp Introduction to Java Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Introduction to Java Course Completion</h4>
@@ -498,10 +459,7 @@
             </li>
 
             <!-- Credential 13 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-datacamp-java-intermediate.webp" alt="DataCamp Intermediate Java Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-datacamp-java-intermediate.webp" data-thumb-alt="DataCamp Intermediate Java Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Intermediate Java Course Completion</h4>
@@ -517,10 +475,7 @@
             </li>
 
             <!-- Credential 14 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-aifest-workshop-human-ai.webp" alt="AI Fest Human-Centered AI Workshop Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-aifest-workshop-human-ai.webp" data-thumb-alt="AI Fest Human-Centered AI Workshop Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Human-Centered AI Design Workshop</h4>
@@ -536,10 +491,7 @@
             </li>
 
             <!-- Credential 15 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-aifest-workshop-tech-arch.webp" alt="AI Fest Technical Architecture Workshop Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-aifest-workshop-tech-arch.webp" data-thumb-alt="AI Fest Technical Architecture Workshop Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Scalable Technical Architecture Workshop</h4>
@@ -555,10 +507,7 @@
             </li>
 
             <!-- Credential 16 -->
-            <li class="credential-item">
-              <div class="cred-thumb-wrap">
-                <img src="/assets/images/cert-aifest-webinar-agile.webp" alt="AI Fest Agile Engineering Webinar Certificate" class="cred-thumb" loading="lazy" width="160" height="110">
-              </div>
+            <li class="credential-item" data-thumb="/assets/images/cert-aifest-webinar-agile.webp" data-thumb-alt="AI Fest Agile Engineering Webinar Certificate">
               <div class="cred-content">
                 <div class="cred-header">
                   <h4 class="cred-title">Agile Engineering &amp; Team Delivery Webinar</h4>

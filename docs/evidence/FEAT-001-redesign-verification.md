@@ -12,14 +12,19 @@ Design: DESIGN.md revision 1
 | --- | --- | --- |
 | REQ-001 / VIS-002: Identity, role, and immediate contact | PASS | Edge headless CDP rendered at 390x844 and 1440x900. Name, role, positioning paragraph, resume PDF link, and email link are visible in initial viewport before scrolling. Screenshot: `docs/evidence/screenshots/phase1-mobile-390x844.png`, `docs/evidence/screenshots/phase1-desktop-1440x900.png`. |
 | VIS-001 / VIS-009: Artem-inspired typography & palette | PASS | Georgia serif headlines/captions, system sans-serif UI/body/metadata, white canvas (`#ffffff`), media stages (`#f5f5f3`), subtle dividers (`#dededb`). Card-box borders and generic chip tags eliminated. |
-| VIS-002: First project title placement | PASS | Measured via Chrome DevTools Protocol at 390x844: `firstProjectTitleTop` = 609.68px (target: <= 740px). At 1440x900: `firstProjectTitleTop` = 573.15px (visibly begun within 900px viewport). |
+| VIS-002: First project title placement | PASS | Measured via Chrome DevTools Protocol at 390x844: `firstProjectTitleTop` = 608.09px (target: <= 740px). At 1440x900: `firstProjectTitleTop` = 571.56px (visibly begun within 900px viewport). |
 | REQ-008 / VIS-003: Horizontal overflow & responsive layout | PASS | Measured at 390px (`scrollWidth: 390`, `viewportWidth: 390`, `hasHorizontalOverflow: false`) and 1440px (`scrollWidth: 1425`, `viewportWidth: 1440`, `hasHorizontalOverflow: false`). |
+| VIS-004: Contained 1-slide certificate gallery | PASS | Verified exactly 1 certificate slide visible at all viewport widths. Contained media stage with aspect ratio 16/11 and object-fit contain. |
+| VIS-004 / VIS-007: Numeric counter & gallery controls | PASS | Toolbar features `01 / 16` numeric indicator, prev/next buttons, and pause/resume button. Tested via CDP: next increments to `02 / 16` and pauses autoplay, prev decrements, pause/resume toggles correctly. |
+| VIS-004: Inactive slide link focus handling | PASS | Links on hidden slides receive `tabindex="-1"`; active slide links have `tabindex` cleared for accessible keyboard navigation. |
+| VIS-005: Compact credentials index height | PASS | Canonical text index replaced repeated 16 thumbnail card boxes with dense metadata rows and direct document links. Credentials section total height on 390x844 mobile measured at 3026px (target: <= 4200px, down from 6667px). |
 | VIS-006: Computed font sizes | PASS | Body computed font size = 16px (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`). H1 computed font size = 30px mobile / 48px desktop (`Georgia, "Times New Roman", Times, serif`). |
 | REQ-004: Featured builds accuracy | PASS | 3 builds featured: AqOne, Warang, Project Tabang with honest captions, truthful role definitions, stack, and active repository links. |
+| REQ-005 / REQ-014: Certificate and document resolution | PASS | All 16 credentials verified with valid image previews and direct document/letter links resolving HTTP 200. |
 | REQ-006 / REQ-013: Contact destinations | PASS | All 6 destinations preserved: direct email (`mailto:olajaylenardangelo@gmail.com`), LinkedIn, GitHub, Instagram, Facebook, JobStreet. |
 | REQ-009: Privacy | PASS | No private phone numbers, home addresses, secrets, or tracking scripts present. Automated test confirmed `09944891004` absent. |
 | Core automated test suite | PASS | `npm test` executed: 12 tests passed, 0 failures. |
-| Production build | PASS | `npm run build` completed in 170ms. Transferred dist: HTML 36.9 kB, CSS 18.0 kB, JS 6.1 kB (total gzipped: ~11.6 kB, well under 200 KB budget). |
+| Production build | PASS | `npm run build` completed cleanly without errors. |
 
 ## Measured viewport data
 
@@ -29,7 +34,9 @@ Design: DESIGN.md revision 1
 - Masthead height: 45 px
 - Intro height: 386 px (bottom at y=475px)
 - Builds section top: 475.22 px
-- First project title top: 609.68 px (<= 740px criteria satisfied)
+- First project title top: 608.09 px (<= 740px criteria satisfied)
+- Credentials section top: 3605.39 px
+- Credentials section height: 3026 px (<= 4200px criteria satisfied, down from 6667px)
 - Body font size: 16px
 - H1 font size: 30px serif
 
@@ -39,7 +46,9 @@ Design: DESIGN.md revision 1
 - Masthead height: 45 px
 - Intro height: 324 px
 - Builds section top: 448.98 px
-- First project title top: 573.15 px (visible in opening view)
+- First project title top: 571.56 px (visible in opening view)
+- Credentials section top: 2723.47 px
+- Credentials section height: 2403 px
 - Body font size: 16px
 - H1 font size: 48px serif
 
@@ -49,9 +58,13 @@ Design: DESIGN.md revision 1
 - Before Desktop (1440x900): `docs/evidence/screenshots/before-desktop-1440x900.png`
 - Phase 1 Mobile (390x844): `docs/evidence/screenshots/phase1-mobile-390x844.png`
 - Phase 1 Desktop (1440x900): `docs/evidence/screenshots/phase1-desktop-1440x900.png`
+- Phase 2 Mobile (390x844): `docs/evidence/screenshots/phase2-mobile-390x844.png`
+- Phase 2 Desktop (1440x900): `docs/evidence/screenshots/phase2-desktop-1440x900.png`
+- Phase 2 Credentials Mobile (390x844): `docs/evidence/screenshots/phase2-credentials-mobile-390x844.png`
+- Phase 2 Credentials Desktop (1440x900): `docs/evidence/screenshots/phase2-credentials-desktop-1440x900.png`
 
 ## Limitations & pending checks
 
 - Human 10-second comprehension testing (REQ-015) remains Pending until physical readers can be tested.
 - Physical device testing on real hardware is handled by Len; browser emulation measurements establish the verified local behavior.
-- Phase 2 will execute certificate gallery refinement, numeric counter, and compact text index.
+- Phase 3 will execute responsive verification across 320, 390, 768, 1024, and 1440px on the production preview server with 200% zoom and no-JS audits.

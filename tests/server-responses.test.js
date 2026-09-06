@@ -39,12 +39,8 @@ test('All local asset paths in index.html resolve with 200 OK on active server',
   const html = fs.readFileSync(path.join(projectRoot, 'index.html'), 'utf-8');
   
   const assetUrls = new Set();
-  const srcMatches = html.matchAll(/src=["'](\/assets\/[^"']+)["']/g);
-  for (const m of srcMatches) {
-    assetUrls.add(m[1]);
-  }
-  const hrefMatches = html.matchAll(/href=["'](\/assets\/[^"']+)["']/g);
-  for (const m of hrefMatches) {
+  const assetMatches = html.matchAll(/(?:src|href|data-thumb)=["'](\/assets\/[^"']+)["']/g);
+  for (const m of assetMatches) {
     assetUrls.add(m[1]);
   }
 

@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
-const PREVIEW_URL = 'http://127.0.0.1:4173';
+const PREVIEW_URL = process.env.PREVIEW_URL || 'http://127.0.0.1:4173';
 
 test('Production preview server serves index.html with 200 OK', async () => {
   const start = Date.now();
@@ -47,12 +47,8 @@ test('Production preview serves all public documents and image assets with 200 O
   const html = fs.readFileSync(path.join(projectRoot, 'index.html'), 'utf-8');
   
   const assetUrls = new Set();
-  const srcMatches = html.matchAll(/src=["'](\/assets\/[^"']+)["']/g);
-  for (const m of srcMatches) {
-    assetUrls.add(m[1]);
-  }
-  const hrefMatches = html.matchAll(/href=["'](\/assets\/[^"']+)["']/g);
-  for (const m of hrefMatches) {
+  const assetMatches = html.matchAll(/(?:src|href|data-thumb)=["'](\/assets\/[^"']+)["']/g);
+  for (const m of assetMatches) {
     assetUrls.add(m[1]);
   }
 
