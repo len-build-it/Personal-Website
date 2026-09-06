@@ -1,8 +1,8 @@
 # Current handoff: Gemini portfolio implementation
 
 Created: 2026-09-06T15:55:03+08:00
-Updated: 2026-09-06T16:21:00+08:00
-State: Phase 1 complete; committing checkpoint and proceeding to Phase 2
+Updated: 2026-09-06T16:26:00+08:00
+State: Phase 2 complete; committing checkpoint and proceeding to Phase 3
 Feature: FEAT-001
 
 ## Read first
@@ -24,14 +24,14 @@ Gemini is executing all three phases continuously with commits.
 
 ## Working tree and results
 
-- Phase 1 verified content and static foundation completed.
-- Source documents reviewed: resume docx/pdf, all 16 certificate documents, and GitHub profile README.
-- Privacy boundaries preserved: phone number omitted, 01 IDS folder excluded.
-- Reviewed public documents copied to `public/assets/documents/` and previews optimized to WebP in `public/assets/images/` (all previews <= 200 KB).
-- Application initialized with Vite as sole dev dependency; scripts `dev`, `build`, `preview`, `test`.
-- Semantic HTML and full canonical credentials list built, functioning without JavaScript.
-- Automated tests (`npm test`) pass (7/7 checks).
-- Production build (`npm run build`) succeeded with ~11.9 KB compressed initial bundle.
+- Checkpoint 1 committed: `27f1fe0 feat(portfolio): establish verified content and static foundation`.
+- Phase 2 mobile layout and credentials carousel complete:
+  - Responsive layouts verified at 320, 390x844, 768, and 1440px.
+  - Progressive enhancement carousel: 6s visible interval, pause on hover/focus/button, swipe with scroll preservation, reduced motion suppression, edge cases handled.
+  - All 16 credentials readable in static canonical list.
+  - Touch targets >= 44x44px, text contrast >= 4.5:1.
+  - 9/9 automated tests passing.
+  - Development server verified on `http://127.0.0.1:5173/`.
 
 ## Nonblocking gaps
 
@@ -40,5 +40,6 @@ Gemini is executing all three phases continuously with commits.
 
 ## Next action
 
-Stage reviewed phase 1 files, commit `feat(portfolio): establish verified content and static foundation`, verify commit hash, and proceed immediately into Phase 2 responsive layout and carousel interaction verification.
+Stage reviewed phase 2 files, commit `feat(portfolio): add responsive layout and accessible credentials`, verify commit hash, and proceed immediately into Phase 3 final production verification, README documentation, and preview delivery.
+
 

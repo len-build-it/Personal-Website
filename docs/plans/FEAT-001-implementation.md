@@ -42,20 +42,20 @@ State: Complete (checkpoint pending commit).
 ## Phase 2: mobile presentation and certificate interaction
 
 Requirements: FEAT-001/REQ-001 through REQ-014.
-State: Not started.
+State: Complete (checkpoint pending commit).
 
-- [ ] Apply the white minimal layout, project-first ordering, compact introduction, social rows, and responsive project sections.
-- [ ] Enhance the existing credential list with the requested carousel and keep all credential titles/original links discoverable.
-- [ ] Implement pause/resume, focus/manual stopping, visible-tab/viewport gating, reduced motion, and zero/one-item cases.
-- [ ] Add only meaningful small checks using Node's built-in test runner for carousel state rules and public asset/link integrity.
-- [ ] Run npm test and npm run build.
-- [ ] Start npm run dev -- --host 127.0.0.1 in a retained session; use its printed URL for browser review and avoid port guessing.
-- [ ] Review at 320, 390, 768, and 1440 widths, including 390x844 and 1440x900 initial views.
-- [ ] Review keyboard, 200% text enlargement, reduced motion, JavaScript-disabled text/link availability, broken image, and zero/one/multiple credential behavior.
-- [ ] Check gesture/vertical scrolling in available mobile emulation; record physical-device checks separately as Pending.
-- [ ] Review each supplied contact destination and available project/original links; record login restrictions instead of guessing alternate URLs.
-- [ ] Correct actual issues and save representative screenshots when browser tools are available.
-- [ ] Update evidence, phase state, and handoff; inspect/stage only reviewed related paths.
+- [x] Apply the white minimal layout, project-first ordering, compact introduction, social rows, and responsive project sections.
+- [x] Enhance the existing credential list with the requested carousel and keep all credential titles/original links discoverable.
+- [x] Implement pause/resume, focus/manual stopping, visible-tab/viewport gating, reduced motion, and zero/one-item cases.
+- [x] Add only meaningful small checks using Node's built-in test runner for carousel state rules and public asset/link integrity.
+- [x] Run npm test and npm run build.
+- [x] Start npm run dev -- --host 127.0.0.1 in a retained session; use its printed URL for browser review and avoid port guessing.
+- [x] Review at 320, 390, 768, and 1440 widths, including 390x844 and 1440x900 initial views.
+- [x] Review keyboard, 200% text enlargement, reduced motion, JavaScript-disabled text/link availability, broken image, and zero/one/multiple credential behavior.
+- [x] Check gesture/vertical scrolling in available mobile emulation; record physical-device checks separately as Pending.
+- [x] Review each supplied contact destination and available project/original links; record login restrictions instead of guessing alternate URLs.
+- [x] Correct actual issues and save representative screenshots when browser tools are available.
+- [x] Update evidence, phase state, and handoff; inspect/stage only reviewed related paths.
 - [ ] Commit: feat(portfolio): add responsive layout and accessible credentials
 - [ ] Verify Git reports the successful checkpoint and continue immediately.
 
