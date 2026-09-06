@@ -194,8 +194,41 @@ body {
   border-bottom: 1px solid var(--color-border);
 }
 
+.intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 14px;
+}
+
 .intro-header {
-  margin-bottom: 4px;
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 0;
+}
+
+.intro-portrait-wrap {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-self: center;
+}
+
+.intro-portrait {
+  width: clamp(68px, 20vw, 76px);
+  height: clamp(68px, 20vw, 76px);
+  object-fit: cover;
+  border-radius: var(--radius-media);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-media);
+  display: block;
+}
+
+.intro-body {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 4px;
 }
 
 .intro-name {
@@ -209,6 +242,36 @@ body {
 }
 
 @media (min-width: 768px) {
+  .intro-grid {
+    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-6);
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .intro-header {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .intro-portrait-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+
+  .intro-portrait {
+    width: 180px;
+    height: 180px;
+  }
+
+  .intro-body {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
   .intro-name {
     font-size: 3rem;
   }
@@ -991,19 +1054,44 @@ body {
 
 .site-footer {
   padding-top: var(--space-5);
+  padding-bottom: var(--space-4);
   border-top: 1px solid var(--color-border-subtle);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-3) var(--space-5);
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   color: var(--color-ink-muted);
 }
 
+.footer-meta {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
 .footer-credit {
   color: var(--color-ink-secondary);
+  font-weight: 500;
+}
+
+.footer-privacy {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+}
+
+.footer-privacy strong {
+  color: var(--color-ink-secondary);
+  font-weight: 600;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
 }
 
 .footer-backtop {

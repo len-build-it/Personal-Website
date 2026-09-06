@@ -37,7 +37,8 @@ test('All certificate preview images exist and are under 200 KB', () => {
     'cert-aifest-workshop-tech-arch.webp',
     'cert-aifest-webinar-agile.webp',
     'project-aqone.webp',
-    'project-tabang.webp'
+    'project-tabang.webp',
+    'idpic.jpg'
   ];
 
   for (const imgName of expectedImages) {
@@ -60,6 +61,9 @@ test('index.html contains essential semantic sections and no private data', () =
   assert.match(html, /id=["']background["']/i, 'Must contain background section');
   assert.match(html, /id=["']credentials["']/i, 'Must contain credentials section');
   assert.match(html, /id=["']contact["']/i, 'Must contain contact section');
+
+  // Privacy Policy in footer
+  assert.match(html, /Privacy Policy:/i, 'Must contain Privacy Policy in footer');
 
   // Contact links
   assert.match(html, /mailto:olajaylenardangelo@gmail\.com/i, 'Must contain valid mailto');

@@ -60,6 +60,23 @@ Observed through git log:
   - `final-desktop-1440x900.png`
   - `final-no-js-390x844.png`
 
+## Recent enhancements (2026-09-06)
+
+- Added profile portrait (`/assets/images/idpic.jpg`) to intro/title section:
+  - Mobile: compact 72px avatar aligned with H1/role header.
+  - Desktop: 180px editorial portrait cleanly integrated into editorial intro grid.
+  - Mobile first project title top measured at 650.59px (<= 740px budget maintained).
+  - Desktop first project title top measured at 567.56px (well within 900px viewport).
+- Added formal Privacy Policy to site footer:
+  - Explicit disclosure confirming no cookies, no trackers, and no personal data collection on this static portfolio.
+  - Responsive footer metadata layout with back-to-top navigation.
+- All 12 automated unit, content-integrity, preview, and response tests passing.
+- Visual evidence preserved in `docs/evidence/screenshots/`:
+  - `portrait-mobile-390x844.png`
+  - `portrait-desktop-1440x900.png`
+  - `footer-mobile.png`
+  - `footer-desktop.png`
+
 ## Limitations & handoff notes
 
 - Human 10-second comprehension testing (REQ-015) remains Pending until physical human participants are administered the test per the protocol in README.md.
