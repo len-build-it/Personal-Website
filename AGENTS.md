@@ -65,7 +65,8 @@ Do not manually edit CHANGELOG.md or generated files, and do not add an agent co
 For FEAT-001, Len explicitly requested continuous implementation from start to finish with commits.
 The current HANDOFF.md and docs/plans/FEAT-001-implementation.md carry that delegated authority.
 This project-specific instruction supersedes the generic requirements above and in local skills/templates for a new routine approval round, per-phase sign-off, and a fixed three-attempt cutoff.
-The feature/product revision 3 and plan revision 1 were authored under Len's delegation, not separately reviewed verbatim by him.
+Use the current revisions recorded in HANDOFF.md; they were authored under Len's delegation, not separately reviewed verbatim by him.
+Len's Artem-reference request authorizes the current portfolio redesign plan; the same continuous execution and commit rules apply.
 Execute the plan continuously, investigate recoverable failures, and keep honest evidence and reviewed commit checkpoints.
 The documented Vite development dependency is part of the execution scope.
 Missing optional Drive links, photographs, unknown optional content, and unavailable human tests are handled by the specification's fallbacks rather than stopping implementation.

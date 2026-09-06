@@ -1,8 +1,8 @@
 # Product overview: Lenard Angelo Olajay portfolio
 
 Created: 2026-09-06T15:40:38+08:00
-Updated: 2026-09-06T15:55:03+08:00
-Revision: 3
+Updated: 2026-09-06T16:46:55+08:00
+Revision: 4
 Status: Execution specification under Len's delegated planning authority
 
 ## Purpose
@@ -25,7 +25,7 @@ Len's latest instruction accepted the review recommendations, requested mobile o
 The detailed behavior is maintained once in [FEAT-001](../features/FEAT-001-portfolio.md).
 Architecture is in [ARCHITECTURE.md](ARCHITECTURE.md).
 Implementation is authorized for Gemini to execute continuously with reviewed commits under the project-specific rule in root AGENTS.md.
-No site code was created during this planning task.
+The initial static site now exists; this planning task prepares its visual redesign without editing application code.
 Exclude databases, accounts, forms, analytics, newsletters, blogs, and automatic Drive synchronization.
 
 ## Remaining content work
@@ -34,3 +34,9 @@ Inspect the updated resume and certificate contents before authoring claims.
 Use the supplied Instagram profile and other contacts without another confirmation round.
 Omit unknown optional content and record limitations.
 Drive links, headshots, and live project demos are optional, not readiness gates.
+
+## Current visual direction
+
+Use [DESIGN.md](DESIGN.md) revision 1 for the researched Artem reference, concrete visual tokens, composition, mobile proportions, and VIS acceptance checks.
+The objective is an editorial design with serif/sans contrast, image-led project rows, quiet controls, and a compact certificate index.
+Keep the existing one-page reading flow and direct contacts.

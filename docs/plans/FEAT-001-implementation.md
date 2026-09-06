@@ -1,88 +1,109 @@
-# Implementation plan: FEAT-001 portfolio
+# Implementation plan: FEAT-001 editorial portfolio redesign
 
 Created: 2026-09-06T15:55:03+08:00
-Updated: 2026-09-06T15:55:03+08:00
-Revision: 1
-Status: Ready for Gemini under delegated execution authority
-Target branch: master, confirmed unborn on preparation; preserve the actual branch if subsequently changed.
+Updated: 2026-09-06T16:46:55+08:00
+Revision: 2
+Status: Prepared for Gemini; redesign not started
+Feature: FEAT-001 revision 4
+Design: product/DESIGN.md revision 1
+Target branch: master at preparation; preserve the actual current branch.
+Observed HEAD: 9c75da3 (Len's Toolkit init)
 
-## Authority and execution
+## Authority and start point
 
-Read root HANDOFF.md, FEAT-001 revision 3, and product documents revision 3.
-Len requested this concrete plan for Gemini and explicitly instructed continuous execution from start to finish with commits.
-Do not ask Len to separately approve this newly authored document as a routine gate.
-Len did not separately review these exact revisions; the recorded authority is his delegation and acceptance of the review recommendations.
-Execute all three phases in one continuous run where the environment permits.
-No approval pause between phases, no fixed retry count, and no stop because optional Drive links or imagery are missing.
-Investigate recoverable failures, adapt within scope, and proceed with independent work.
-Never report a failed check or failed commit as success.
-A real unavailable credential, prohibited operation, or irrecoverable environment issue may prevent affected work; document it honestly and complete everything else.
-Do not broaden scope or bypass external tool permissions.
+Len requested investigation of https://artem.vyraz.studio/ and an implementation plan integrating its design into the existing portfolio.
+His earlier instruction remains: Gemini continues start to finish with commits, no routine approval pauses or fixed retry cutoff.
+This plan defines that redesign within the existing one-page product, without initiating website edits in the planning turn.
+These exact words are authored under delegation, not separately user-approved verbatim.
+Read HANDOFF.md, FEAT-001, DESIGN.md, ARCHITECTURE.md, and CONSTRAINTS.md.
+The initial implementation plan is preserved at ../archive/FEAT-001-implementation-v1.md.
+Reuse index.html, src/styles.css, src/main.js, tests/, and existing public assets.
+Do not scaffold a new project, replace Vite, change package versions, or add an animation/carousel dependency.
 
-## Phase 1: reviewed content and project foundation
+## Observed starting issues
 
-Requirements: FEAT-001/REQ-001 through REQ-006, REQ-009, REQ-012, REQ-013.
-State: Complete (checkpoint pending commit).
+The previous live mobile audit measured an 894px header, first project section at y=982px, and a 6667px credential section at 390x844.
+The current source uses repeated bordered cards and duplicates credential previews in the gallery and full index.
+src/main.js derives gallery content from canonical .credential-item markup; changing that markup requires updating its reader.
+Current slide translation ignores the 1rem flex gap: percentage shifts can accumulate misalignment.
+There are 16 dot controls even when only 14 start positions exist on three-across desktop layouts.
+Current focusin pauses before the button click handler, so pointer/keyboard pause actions need an explicit regression check.
+A reduced-motion change back to normal calls resumeAutoplay even after a manual pause.
+tests/carousel-state.test.js tests copied arithmetic instead of importing production behavior.
+Production preview tests hard-code port 4173 and assert old prose.
+These source-derived risks are not all proven live failures; reproduce through the real flow before fixing.
+The redesign's one-visible-slide and numeric-counter design removes the multi-column/dot assumptions, but its alignment and pause semantics still require actual testing.
 
-- [x] Inspect git status --short --branch, git log -5 --oneline if commits exist, and any existing package files.
-- [x] Check setup once with npx len-toolkit start if not checked in this Gemini session; inspect any changed instructions and preserve the project-specific continuous-execution override.
-- [x] Read the updated resume, actual certificates, and existing GitHub profile with available document tools.
-- [x] Record source mapping, duplicate certificate choices, verified claims, and omitted uncertainty in docs/evidence/FEAT-001-verification.md.
-- [x] Confirm available Node and npm; initialize the small Vite project only if no app already exists, and preserve any later user changes.
-- [x] Establish npm scripts dev, build, preview, and test, with Vite as the only app development dependency.
-- [x] Build semantic page sections and canonical credential list with the correct contact links and reviewed public assets.
-- [x] Make the page useful without JavaScript.
-- [x] Run npm run build and inspect generated dist assets for accidental private files.
-- [x] Review exact changes and update evidence, phase state, and HANDOFF.md.
-- [ ] Stage reviewed planning/rule files relevant to this scope and app foundation paths explicitly; do not blanket-stage .agents or unrelated existing files.
-- [ ] Inspect git diff --cached and commit: feat(portfolio): establish verified content and static foundation
-- [ ] Confirm success using git log -1 --format="%h %s".
-- [ ] Continue immediately to phase 2.
+## Phase 1: typography, composition, and content hierarchy
 
-## Phase 2: mobile presentation and certificate interaction
+Requirements: FEAT-001/REQ-001 through REQ-009, REQ-013; VIS-001, VIS-002, VIS-003, VIS-006, VIS-009.
+State: Complete.
 
-Requirements: FEAT-001/REQ-001 through REQ-014.
-State: Complete (checkpoint pending commit).
+- [x] Inspect git status --short --branch and git log -5 --oneline; preserve unrelated changes.
+- [x] Run toolkit setup once if not checked in this Gemini session, preserving project-specific execution authority and custom files.
+- [x] Read relevant current app files and existing evidence before editing; do not assume old completion claims are independent verification.
+- [x] Start npm run dev -- --host 127.0.0.1 and use its exact printed URL; reuse an existing matching server when appropriate.
+- [x] Capture the current 390x844 and 1440x900 introduction, projects, credentials, and contact as before evidence.
+- [x] Create the type/color/spacing tokens specified in DESIGN.md and replace repetitive card/chip styling in place.
+- [x] Recompose masthead, introduction, project rows, about/education, and contact; preserve contact destinations and truthful content.
+- [x] Use actual available project imagery with honest captions or the design's text-only fallback.
+- [x] Remove page-audit narration and implementation prose from visitor-facing copy.
+- [x] Verify first-project placement, wrapping, computed font sizes, and keyboard/touch control sizes on mobile and desktop.
+- [x] Run npm run build; review rendered screenshots against VIS-001, VIS-002, and VIS-009 before considering this phase complete.
+- [x] Record actual checks and limitations in docs/evidence/FEAT-001-redesign-verification.md and update HANDOFF.md.
+- [ ] Stage only reviewed changed paths, inspect git diff --cached, and commit: feat(portfolio): establish editorial visual hierarchy
+- [ ] Verify the checkpoint with git log -1 --format="%h %s" and continue without a routine sign-off.
 
-- [x] Apply the white minimal layout, project-first ordering, compact introduction, social rows, and responsive project sections.
-- [x] Enhance the existing credential list with the requested carousel and keep all credential titles/original links discoverable.
-- [x] Implement pause/resume, focus/manual stopping, visible-tab/viewport gating, reduced motion, and zero/one-item cases.
-- [x] Add only meaningful small checks using Node's built-in test runner for carousel state rules and public asset/link integrity.
-- [x] Run npm test and npm run build.
-- [x] Start npm run dev -- --host 127.0.0.1 in a retained session; use its printed URL for browser review and avoid port guessing.
-- [x] Review at 320, 390, 768, and 1440 widths, including 390x844 and 1440x900 initial views.
-- [x] Review keyboard, 200% text enlargement, reduced motion, JavaScript-disabled text/link availability, broken image, and zero/one/multiple credential behavior.
-- [x] Check gesture/vertical scrolling in available mobile emulation; record physical-device checks separately as Pending.
-- [x] Review each supplied contact destination and available project/original links; record login restrictions instead of guessing alternate URLs.
-- [x] Correct actual issues and save representative screenshots when browser tools are available.
-- [x] Update evidence, phase state, and handoff; inspect/stage only reviewed related paths.
-- [ ] Commit: feat(portfolio): add responsive layout and accessible credentials
-- [ ] Verify Git reports the successful checkpoint and continue immediately.
+## Phase 2: certificate presentation and real interaction checks
 
-## Phase 3: final production verification and delivery
+Requirements: FEAT-001/REQ-010 through REQ-014; VIS-003 through VIS-008.
+State: Not started.
 
-Requirements: All FEAT-001 requirements; REQ-015 may remain Pending human participation.
-State: Complete (checkpoint pending commit).
+- [ ] Trace every selector, event handler, and caller affected by canonical credential markup changes in src/main.js and tests/.
+- [ ] Build one contained certificate figure with an adjacent desktop caption and stacked mobile caption.
+- [ ] Replace repeated thumbnail cards with a compact text index; preserve all 16 credential records and original-document destinations.
+- [ ] Keep preview metadata in the same canonical source; migrate extraction before removing the old .cred-thumb elements.
+- [ ] Replace the 16-dot strip with numeric position, previous/next, and pause/resume.
+- [ ] Use actual slide offsets including gaps, or a gap-free full-width track, so every slide aligns exactly.
+- [ ] Preserve explicit user pause across hover, visibility, resize, and reduced-motion changes; verify pause/resume with both keyboard and pointer.
+- [ ] Preserve no-JS index/original links, sensible zero/one-item states, screen-reader naming, and hidden-slide focus management.
+- [ ] Replace duplicate arithmetic tests with a minimal production-importing check or direct browser behavior checks; add no testing framework.
+- [ ] Update stale text/structural assertions to test meaningful content/link behavior while retaining coverage.
+- [ ] Build before server-based tests, then run npm run preview -- --host 127.0.0.1 and use its printed URL.
+- [ ] Existing tests expect port 4173; use that if available, otherwise make the test base URL configurable and pass the actual printed URL.
+- [ ] Run npm test with required dev/preview servers available; read tests/server-responses.test.js to satisfy its real preconditions.
+- [ ] Exercise all gallery positions, zero/one/multiple-item cases, focus, pause/resume, reduced motion, tab visibility, and no-JS reading.
+- [ ] Measure the credential section at 390px and compare to the <=4200px target without hiding qualifications.
+- [ ] Update evidence, plan state, and handoff; inspect and stage only reviewed paths.
+- [ ] Commit: feat(portfolio): refine credential gallery and compact index
+- [ ] Verify the checkpoint and continue immediately.
 
-- [x] Review text for source accuracy, duplicate claims, unsupported superlatives, and working resume/contact access.
-- [x] Confirm all local asset references resolve and compressed preview sizes meet the target or have justified exceptions.
-- [x] Run npm test and npm run build on the final tree.
-- [x] Run npm run preview -- --host 127.0.0.1 in a retained session and open the exact printed URL.
-- [x] Confirm a successful response and smoke-check the production page, main links, and carousel; development-server success alone is insufficient.
-- [x] Record actual final commands, times, results, screenshots, and limitations in the evidence.
-- [x] Keep human ten-second tests and physical-device checks Pending unless actually performed; give Len the short test procedure without pausing delivery for it.
-- [x] Add a concise README with install/run/build instructions and how to update projects, credentials, resume, and optional Drive originals.
-- [x] Mark completed versus unavailable checks accurately and update the handoff with any remaining limitations.
-- [ ] Review/stage only relevant changes and commit: chore(portfolio): verify production build and document maintenance
-- [ ] Verify the commit and final git status; preserve unrelated changes.
-- [ ] Deliver the local production preview and a concise summary of checks and limitations.
-- [ ] Do not push or publish publicly unless Len separately requests it.
+## Phase 3: production visual QA and handoff
 
-## Commit and recovery rules
+Requirements: All active FEAT-001 and VIS requirements.
+State: Not started.
 
-A checkpoint means required available checks passed, reviewed paths were staged, and Git confirmed the commit.
-Do not create another commit solely to insert its own hash; unique messages identify checkpoints and subsequent phases can record previous hashes.
-If commit identity or permissions prevent committing, preserve work, finish independent implementation and checks, and report exactly which checkpoints remain uncommitted.
-Do not invent an author identity, use an agent co-author, discard edits, or reset the repository.
-No repetitive identical retries: investigate the cause and use evidence to choose the next correction.
-A failure remains open until verified resolved; persistence does not authorize claiming completion or bypassing security.
+- [ ] Run npm run build and npm test against the actual required server URLs on the final source.
+- [ ] Review the production preview at 320, 390, 768, 1024, and 1440px; confirm this is the latest production output, not stale dist.
+- [ ] Capture final 390x844 and 1440x900 opening views, project rows, credential gallery/index, and contact.
+- [ ] Record measured first-project position, credential section height, document overflow, body font sizes, and actual screenshot paths.
+- [ ] Check 200% text enlargement, keyboard traversal, visible focus, reduced motion, vertical mobile scrolling, failed preview image, and readable no-JS fallback.
+- [ ] Compare before/after with the reference principles: serif/sans hierarchy, image space, minimal chrome, concise captions, and deliberate alignment.
+- [ ] Check all public assets and supplied links; record external login/access limits rather than fabricate alternatives.
+- [ ] Preserve the performance budget and review actual asset sizes; do not infer a performance score from localhost response time.
+- [ ] Correct visual issues before marking the phase complete; continue through recoverable failures.
+- [ ] Update README for any actual credential-maintenance changes, evidence, current handoff, and plan progress.
+- [ ] Commit reviewed final paths: chore(portfolio): verify editorial redesign across screen sizes
+- [ ] Confirm the commit and final git status; leave unrelated user changes untouched.
+- [ ] Deliver the verified local preview, representative screenshots, commit references, and remaining limitations.
+- [ ] Do not push or publish publicly without a separate request.
+
+## Completion and recovery
+
+A phase is complete only when its required checks have evidence and Git confirms its reviewed checkpoint.
+Do not mark a checked task or expected screenshot as actual evidence.
+No repeated identical retries, fixed attempt cutoff, or routine user approval pause.
+Investigate actual failures and continue independent authorized work.
+If a required tool, permission, or credential is unavailable, preserve work and report which checks/commits remain unverified or blocked.
+Do not bypass permission controls, invent author identity, overwrite user edits, or describe missing checks as passing.
+Human ten-second comprehension testing and physical-device checks remain Pending until actual participants/devices supply results; they do not block delivery of verified browser work.

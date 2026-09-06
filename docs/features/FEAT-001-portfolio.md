@@ -1,8 +1,8 @@
 # FEAT-001: Lenard Angelo Olajay portfolio - Gemini project specification
 
 Created: 2026-09-06T15:40:38+08:00
-Updated: 2026-09-06T15:55:03+08:00
-Revision: 3
+Updated: 2026-09-06T16:46:55+08:00
+Revision: 4
 Status: Execution specification under Len's delegated planning authority
 
 ## Authority and scope
@@ -10,14 +10,18 @@ Status: Execution specification under Len's delegated planning authority
 Len approved the review recommendations, supplied the Instagram profile, requested mobile optimization, and instructed that Gemini continue from start to finish while committing.
 His latest instruction authorizes completing this specification and execution plan without another routine approval round.
 This revision was authored after that instruction; do not claim Len separately reviewed its exact wording.
-Website implementation has not started.
+The initial website is implemented; this revision prepares its visual redesign, which has not started.
 Read this document, the linked architecture and constraints, the implementation plan, and root HANDOFF.md before implementing.
 Use this feature document as the canonical source of behavior and acceptance criteria.
+For current visual composition, typography, responsive proportions, and the refined certificate presentation, follow [DESIGN.md](../product/DESIGN.md) revision 1.
+The latest user request adopts Artem's design direction and supersedes the earlier generic visual treatment.
+Preserve all existing functional scope except the explicitly revised gallery presentation below.
 
 Build a public, single-page portfolio for recruiters and potential clients.
 Make the first impression specific, credible, and easy to scan in approximately ten seconds.
 Use a white background, near-black text, restrained dividers, readable typography, and compact spacing.
-Take inspiration from the direct introduction and clear organization of https://asiguiang.com/ without copying its text, branding, assets, or exact layout.
+Use https://artem.vyraz.studio/ as the primary visual reference, adapted through DESIGN.md to this readable single-page portfolio.
+The earlier Asi reference remains historical context, not the current design authority.
 Do not add a blog, newsletter, database, account system, contact form, tracking, search, or separate project pages.
 
 ## Information order and content
@@ -27,9 +31,9 @@ Do not add a blog, newsletter, database, account system, contact form, tracking,
 Show Lenard Angelo Olajay and the confirmed descriptor Developer / Builder.
 Proposed supporting copy: "Software engineering student building mobile apps, backend systems, and tools for local communities."
 Check the degree wording against the updated resume and use its accurate qualification name.
-Keep this summary to about 40-60 words, with two short verified proof points.
+Keep the opening summary to about 25-40 words, with two short verified proof points and the hierarchy in DESIGN.md.
 Prioritize evidence such as leading AqOne development and founding ASU DevGuild after checking source material.
-Use a compact text-only capability line instead of a separate section of generic capability cards.
+Keep the full stack inventory beside the projects or background, with only the most useful capability summary near the introduction.
 Show Resume, Email, LinkedIn, and GitHub as descriptive links close to the introduction.
 Show Facebook, Instagram, and JobStreet in a secondary wrapping row in the introduction.
 Repeat contact access near the end of the page if useful.
@@ -93,9 +97,10 @@ Do not substitute similar handles or scrape profiles to infer additional persona
 
 Automatic sliding is in scope; automatic synchronization with Drive is not.
 Use a six-second interval as an implementation default and a short restrained slide transition.
-Show up to three previews on wide screens and one readable preview on narrow screens.
+Show one prominent contained certificate on all screens, with its metadata alongside on desktop and below on mobile, as specified in DESIGN.md.
 Never stretch or crop certificate text; contain each image within a stable aspect-ratio area.
-Show previous, next, pause/resume, and a position indicator with accessible names.
+Show previous, next, pause/resume, and a compact numeric position indicator with accessible names.
+Do not create one pagination dot per credential.
 Swiping may be supported but must not be the only navigation method.
 Never interfere with normal vertical page scrolling.
 
@@ -118,6 +123,7 @@ The gallery must not delay the introduction or shift the surrounding page while 
 
 Store selected optimized previews locally and maintain one local credential list.
 Each entry includes a stable ID, title, verified issuer, type, optional issue/expiry date, local preview, descriptive alternative text, and an optional original-document URL.
+The readable index uses compact text rows without repeated thumbnails; keep preview metadata in this canonical entry for the carousel.
 Keep local source paths and verification notes in the evidence document, not in public interface text.
 Use original issuer verification links when supplied and verifiable, or an individual Drive viewer link when provided and accessible to a signed-out viewer.
 Open an external original in a new tab and make that behavior apparent in its accessible link label.
@@ -164,6 +170,13 @@ Do not treat a local self-description as independent verification.
 | REQ-013 | Social coverage | All six contact destinations above appear with descriptive labels; long email and social rows wrap without horizontal overflow. |
 | REQ-014 | Useful loading and failure behavior | Intro text and links render without JavaScript; images below the fold load lazily with reserved space; broken images preserve labels and links. |
 | REQ-015 | Ten-second comprehension | Propose a timed first-view check with three unfamiliar readers: at least two identify the discipline, one concrete build/contribution, and contact/resume access; record real results or Pending, never infer success from layout alone. |
+
+## Current visual acceptance
+
+Apply VIS-001 through VIS-009 in [DESIGN.md](../product/DESIGN.md) alongside REQ-001 through REQ-015.
+Preserve all 16 currently published credential records and the three featured builds.
+If old source-oriented tests assert superseded title punctuation or markup, update those assertions while preserving actual content and link coverage.
+The redesign is not complete from a successful build alone; visual comparison and measured mobile checks are required.
 
 ## Readiness and continued execution
 

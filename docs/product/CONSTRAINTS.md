@@ -1,16 +1,16 @@
 # Shared quality constraints: portfolio
 
 Created: 2026-09-06T15:40:38+08:00
-Updated: 2026-09-06T15:55:03+08:00
-Revision: 3
+Updated: 2026-09-06T16:46:55+08:00
+Revision: 4
 Status: Execution specification under Len's delegated planning authority
 
 ## Responsive and readable layout
 
-Use a restrained centered reading width, approximately 1040px maximum, with body prose constrained to a comfortable line length.
+Use the DESIGN.md shell of approximately 1120px maximum, with body prose constrained to roughly 55-65ch.
 Default body text to at least 16px and normal labels to at least 14px.
-Use a system font stack to avoid a required remote-font request.
-Keep mobile side padding at least 16px.
+Use system sans-serif for body/controls and Georgia for editorial headlines/captions as specified in DESIGN.md; no remote font request is required.
+Use 20px mobile side gutters, retaining at least 16px at 320px width.
 Stack project content and contact rows naturally on narrow screens.
 Use wrapping anchor navigation without a hamburger menu.
 Avoid fixed headers that obscure content or consume the small first viewport.
@@ -60,3 +60,12 @@ Publish only selected files, not the identity-document folder.
 Do not alter Drive sharing permissions.
 No unrequested analytics, tracking pixels, or remote social widgets.
 Links may lead to services that request login; record the observed behavior instead of claiming guaranteed access.
+
+## Redesign acceptance
+
+[DESIGN.md](DESIGN.md) revision 1 adds VIS-001 through VIS-009 and refines the original visual defaults.
+At 390x844 the first project title must begin at or above y=740px and the credential section must be <=4200px tall with all current records at normal text size.
+These targets never permit clipping, deleting qualifications, or shrinking body text; enlarged-text accessibility takes priority over fit targets.
+One certificate is visible at every breakpoint, with accessible numeric position and controls; all documents remain listed in compact text rows.
+Record actual before/after screenshots and measurements from the final production preview.
+Do not repeat prior unsubstantiated claims of full accessibility compliance.

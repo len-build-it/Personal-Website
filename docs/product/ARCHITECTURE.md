@@ -1,14 +1,15 @@
 # Architecture: static single-page portfolio
 
 Created: 2026-09-06T15:40:38+08:00
-Updated: 2026-09-06T15:55:03+08:00
-Revision: 3
+Updated: 2026-09-06T16:46:55+08:00
+Revision: 4
 Status: Execution specification under Len's delegated planning authority
 
 ## Observed facts and chosen implementation
 
-The repository has workflow and planning documents, no application source or package manifest, and no commits on master as last inspected.
-Implement this small site with semantic HTML, CSS, and a minimal JavaScript module.
+The repository now has a Vite static site in index.html, src/styles.css, and src/main.js, committed through 9c75da3 at redesign preparation.
+Preserve the installed dependencies and package lock; no setup scaffold is required.
+Refine the existing semantic HTML, CSS, and minimal JavaScript module.
 Use Vite as the sole development/build dependency, with npm and a committed package-lock.json.
 Do not add a frontend framework, carousel library, CMS, backend, or UI component package.
 This stack choice is an agent-authored decision under the user's delegated planning authority, not a claim of separate user selection.
@@ -46,3 +47,11 @@ Vite provides a standard local development and production workflow.
 Manual credential updates require an edit and rebuild, appropriate for this small portfolio.
 Consider a CMS or Drive synchronization only if frequent updates create a demonstrated maintenance burden.
 Only consider a larger frontend framework when future scope needs application state or more complex routes.
+
+## Redesign integration
+
+Follow [DESIGN.md](DESIGN.md) and preserve the current stack and output directory.
+No GSAP, Matter.js, Typekit, trackers, project-grid engine, or separate Info route is required.
+Use system sans-serif plus Georgia for the documented typographic pairing.
+The credential list remains canonical; its preview metadata feeds the one-visible-slide gallery without repeating index thumbnails.
+Tests must exercise production behavior, not a second implementation of carousel arithmetic.
