@@ -1,10 +1,10 @@
 # Implementation plan: FEAT-001 editorial portfolio redesign
 
 Created: 2026-09-06T15:55:03+08:00
-Updated: 2026-09-06T16:46:55+08:00
-Revision: 2
-Status: Prepared for Gemini; redesign not started
-Feature: FEAT-001 revision 4
+Updated: 2026-09-12T22:28:50+08:00
+Revision: 3
+Status: Redesign complete; SEO verified locally, checkpoint prepared
+Feature: FEAT-001 revision 5
 Design: product/DESIGN.md revision 1
 Target branch: master at preparation; preserve the actual current branch.
 Observed HEAD: 9c75da3 (Len's Toolkit init)
@@ -99,6 +99,25 @@ Commit: chore(portfolio): verify editorial redesign across screen sizes
 - [x] Confirm the commit and final git status; leave unrelated user changes untouched.
 - [x] Deliver the verified local preview, representative screenshots, commit references, and remaining limitations.
 - [x] Do not push or publish publicly without a separate request.
+
+## Phase 4: personal-name SEO
+
+Requirements: FEAT-001/REQ-016 through REQ-018.
+Authority: Len's 2026-09-12 SEO request and supplied Render URL, under the existing portfolio continuous-execution override.
+This revision records the requested scope; its exact wording was not separately approved in chat.
+State: Implementation and checks complete; checkpoint prepared for Git verification.
+Checkpoint message: feat(portfolio): add personal-name search metadata and crawl discovery
+
+- [x] Inspect source and live homepage/crawl responses and confirm the public URL with Len.
+- [x] Add accurate full-name metadata, canonical URL, WebSite/ProfilePage/Person JSON-LD, and social sharing metadata using existing content and portrait.
+- [x] Add static robots.txt and a one-URL sitemap without dependencies or speculative pages.
+- [x] Build, run all existing checks plus a production SEO consistency check, and review the diff.
+- [x] Record actual results and Search Console follow-up in README, evidence, and HANDOFF.md.
+- [ ] Commit only reviewed phase paths and verify the checkpoint through Git.
+
+Evidence: [SEO verification](../evidence/FEAT-001-seo-verification.md).
+The commit checkbox remains pending in the commit's own content because Git must confirm success afterward.
+Resolve the unique checkpoint message above in Git to establish completion without a self-referential follow-up commit.
 
 ## Completion and recovery
 

@@ -23,7 +23,7 @@ npm install
 # Start local development server (http://127.0.0.1:5173/)
 npm run dev
 
-# Run automated tests (12 checks covering assets, markup, security & carousel math)
+# Run automated tests (requires a running production preview)
 npm test
 
 # Build production static bundle into dist/
@@ -95,3 +95,28 @@ To evaluate first-impression readability with real reviewers:
 
 - **Dist Only:** Deploy only the `dist/` directory to your static host (e.g. GitHub Pages, Vercel, Cloudflare Pages).
 - **Private Data:** Government ID cards, personal phone numbers, and internal documents are strictly excluded from the codebase and public output.
+
+## Search visibility
+
+The preferred public homepage is https://lenardangeloolajay.onrender.com/.
+Initial HTML includes the full name, description, canonical URL, WebSite/ProfilePage/Person structured data, and Open Graph sharing metadata.
+The existing portrait is reused for link previews.
+Vite copies public/robots.txt and public/sitemap.xml into the production build.
+The sitemap lists the homepage only because section anchors are parts of the same page.
+
+After deploying the reviewed build to Render:
+
+1. Verify that the homepage, /robots.txt, /sitemap.xml, and /assets/images/idpic.jpg return HTTP 200 with the expected content, and that the homepage has no noindex response header or meta tag.
+2. Add the exact HTTPS URL as a URL-prefix property in [Google Search Console](https://search.google.com/search-console/about) and verify ownership using Google's supplied method.
+   If Google supplies a verification HTML file, place that exact file in public/ and deploy again; do not invent a verification token.
+3. Submit https://lenardangeloolajay.onrender.com/sitemap.xml in Search Console's Sitemaps report.
+4. Inspect the homepage using URL Inspection, run the live test, and request indexing.
+5. Validate the deployed structured data in [Google's Rich Results Test](https://search.google.com/test/rich-results).
+6. Link this homepage from your existing LinkedIn and GitHub profiles using your consistent full name, then review Search Console indexing and search-performance reports over time.
+
+Google controls indexing, titles, snippets, rich results, and rankings.
+These changes help describe and discover the site; they cannot guarantee first place for a name search.
+[Google's SEO starter guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) explains these limits.
+Crawling may take days to weeks after submission, and requesting it does not guarantee indexing ([Google's indexing guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)).
+Local build/tests do not establish live deployment or search placement.
+If you adopt a custom domain, update the URLs in index.html, public/robots.txt, public/sitemap.xml, and the production SEO test together, then configure permanent redirects from the former address and update Search Console.

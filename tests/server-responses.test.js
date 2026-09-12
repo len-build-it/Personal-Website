@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 
 async function getActiveServerUrl() {
+  if (process.env.PREVIEW_URL) return process.env.PREVIEW_URL;
   for (const port of [4173, 5173]) {
     try {
       const res = await fetch(`http://127.0.0.1:${port}/`, { signal: AbortSignal.timeout(600) });

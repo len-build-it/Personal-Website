@@ -1,11 +1,26 @@
-# Current handoff: Gemini editorial portfolio redesign
+# Current handoff: portfolio personal-name SEO
 
 Created: 2026-09-06T15:55:03+08:00
-Updated: 2026-09-06T17:24:00+08:00
-State: Redesign complete across all 3 phases; production preview verified
-Feature: FEAT-001 revision 4
-Plan: revision 2
+Updated: 2026-09-12T22:28:50+08:00
+State: SEO implemented and locally verified; checkpoint prepared; deployment and Google indexing pending
+Feature: FEAT-001 revision 5
+Plan: revision 3
 Design: DESIGN-001 revision 1
+
+## Current SEO work
+
+Len requested SEO optimization for searches of his name on 2026-09-12 and supplied https://lenardangeloolajay.onrender.com/.
+Feature revision 5 and plan revision 3 record this request under the portfolio continuous-execution override; their exact wording was not separately reviewed by Len.
+Added full-name search metadata, canonical URL, WebSite/ProfilePage/Person structured data linked to existing social profiles, portrait sharing metadata, robots.txt, and a one-page sitemap.
+The visible page, CSS, carousel, and dependencies are unchanged.
+Added a production SEO check and made server-response tests honor PREVIEW_URL so unrelated local servers are preserved.
+Build passed and all 13 tests passed against http://127.0.0.1:4189/.
+See [SEO evidence](docs/evidence/FEAT-001-seo-verification.md) for commands, live baseline, failures/recovery, and limitations.
+Checkpoint message: `feat(portfolio): add personal-name search metadata and crawl discovery`.
+This handoff is prepared before committing; confirm that unique message with git log to establish checkpoint completion.
+No push, Render deployment, external profile edit, Search Console verification/submission, or search-ranking validation was performed.
+Next action: with deployment authorization, publish the reviewed build through the existing Render workflow, then follow README's Search Console steps with Len's account access.
+Search indexing, rich results, and first-place ranking are not guaranteed.
 
 ## Read first
 
@@ -87,7 +102,6 @@ Observed through git log:
 
 - Human 10-second comprehension testing (REQ-015) remains Pending until physical human participants are administered the test per the protocol in README.md.
 - Physical device testing on real hardware is handled by Len; browser emulation measurements establish the verified local behavior.
-- Local preview server running at http://127.0.0.1:4173/ and dev server running at http://127.0.0.1:5173/.
+- Historical preview addresses below refer to the September 6 session; the SEO production preview is http://127.0.0.1:4189/.
 - In accordance with safety policies, changes have not been pushed to remote and no unrequested deployment was executed.
-
 

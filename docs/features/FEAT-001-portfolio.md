@@ -1,8 +1,8 @@
 # FEAT-001: Lenard Angelo Olajay portfolio - Gemini project specification
 
 Created: 2026-09-06T15:40:38+08:00
-Updated: 2026-09-06T16:46:55+08:00
-Revision: 4
+Updated: 2026-09-12T22:28:50+08:00
+Revision: 5
 Status: Execution specification under Len's delegated planning authority
 
 ## Authority and scope
@@ -10,7 +10,9 @@ Status: Execution specification under Len's delegated planning authority
 Len approved the review recommendations, supplied the Instagram profile, requested mobile optimization, and instructed that Gemini continue from start to finish while committing.
 His latest instruction authorizes completing this specification and execution plan without another routine approval round.
 This revision was authored after that instruction; do not claim Len separately reviewed its exact wording.
-The initial website is implemented; this revision prepares its visual redesign, which has not started.
+The visual redesign is implemented; revision 5 adds Len's requested personal-name SEO scope.
+Len requested SEO optimization in chat on 2026-09-12 and supplied https://lenardangeloolajay.onrender.com/ as the public URL.
+The SEO requirements below are authored under that request and the portfolio continuous-execution authority, not separately reviewed verbatim by Len.
 Read this document, the linked architecture and constraints, the implementation plan, and root HANDOFF.md before implementing.
 Use this feature document as the canonical source of behavior and acceptance criteria.
 For current visual composition, typography, responsive proportions, and the refined certificate presentation, follow [DESIGN.md](../product/DESIGN.md) revision 1.
@@ -170,6 +172,9 @@ Do not treat a local self-description as independent verification.
 | REQ-013 | Social coverage | All six contact destinations above appear with descriptive labels; long email and social rows wrap without horizontal overflow. |
 | REQ-014 | Useful loading and failure behavior | Intro text and links render without JavaScript; images below the fold load lazily with reserved space; broken images preserve labels and links. |
 | REQ-015 | Ten-second comprehension | Propose a timed first-view check with three unfamiliar readers: at least two identify the discipline, one concrete build/contribution, and contact/resume access; record real results or Pending, never infer success from layout alone. |
+| REQ-016 | Personal-name search identity | Initial production HTML contains a full-name title, accurate description, one visible full-name H1, absolute canonical URL, and valid WebSite/ProfilePage/Person JSON-LD matching visible content and supplied social profiles. |
+| REQ-017 | Crawl discovery and sharing | Production serves robots.txt and a one-page XML sitemap using the supplied HTTPS homepage; Open Graph metadata uses the same URL and existing portrait; no indexing block is introduced. |
+| REQ-018 | Honest search delivery | Document deployment and Search Console verification/indexing steps, distinguish local checks from live search results, and make no first-place, indexing, or rich-result guarantee. |
 
 ## Current visual acceptance
 
